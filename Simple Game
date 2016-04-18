@@ -11,7 +11,7 @@ int bomb(int x,int y,int radius)
 }
 int main()
 {
-	 char qwer[100];
+     char qwer[100];
      float scorecounter=000.1;
      int o1=0,o2=0,o3=0,o4=0,o5=0;
      float random[50],random2[50],random3[50],random4[50],random5[50];
@@ -77,18 +77,18 @@ int main()
 
 	if(GetAsyncKeyState(VK_NUMPAD5))
         {
-        exit(1);
+           exit(1);
         }
 
-	  if(GetAsyncKeyState(VK_UP))
-    	  {
-               allowgunshot=false;
-    	       if(!jump)
-               {
+	 if(GetAsyncKeyState(VK_UP))
+    	 {
+             allowgunshot=false;
+    	     if(!jump)
+              {
                  jump=true;
                  t1=clock();
-               }
-    	  }
+              }
+    	 }
 
 	if(allowgunshot==true)  //Allowgunshot is changed when the character jumps.
 								//firing is banned while character is not on the floor, namely "false".
