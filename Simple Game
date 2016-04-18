@@ -256,9 +256,9 @@ int main()
 
     if(bx1 < 10)
     {
-    bombb=false;
-    o5++;
-    bx1=1200;
+        bombb=false;
+        o5++;
+        bx1=1200;
     }
    //End of bomb creating processes
  
@@ -268,8 +268,8 @@ int main()
     {
         if(y1<cy5)
         {
-    	printf("\a");
-    	exit(0);
+    	   printf("\a");
+    	   exit(0);
         }
     }
 
@@ -277,8 +277,8 @@ int main()
      {
          if(y11<cy5)
          {
-            printf("\a");
-            exit(1);
+             printf("\a");
+             exit(1);
          }
      }
 
@@ -286,8 +286,8 @@ int main()
 	{
              if(y111<cy5)
        	     {
-       	        printf("\a");
-        	exit(0);
+       	         printf("\a");
+         	 exit(0);
        	     }
    	}
 
@@ -295,8 +295,8 @@ int main()
     	{
               if(y1111<cy5)
               {
-            	 printf("\a");
-            	 exit(1);
+            	  printf("\a");
+            	  exit(1);
               }
 	}
 	//End of controlling hit or not.
@@ -305,22 +305,22 @@ int main()
 
     if(gunshot==true)   // gunshot is allowed if user doesn't press UP key.First, It was false.
     {
-       circle(bulletx,bullety,3);
-       bulletx+=bulletxspeed;
-       if(bulletx>1300)
-       {
-          bulletx=174;
-          gunshot=false;
-       }
+        circle(bulletx,bullety,3);
+        bulletx+=bulletxspeed;
+        if(bulletx>1300)
+        {
+           bulletx=174;
+           gunshot=false;
+        }
     }
 
     if(bulletx>=bx1)  //If the bullet's X coordinate is equal to bomb's X coordinate
     {                 //or higher. Bomb must be destroyed by bullet.So both disappear.
-       bombb=false;
-       gunshot=false;
-       o5++;
-       bx1=1200;
-       bulletx=174;
+        bombb=false;
+        gunshot=false;
+        o5++;
+        bx1=1200;
+        bulletx=174;
     }
 
     if(bx1<200) //This is obvious that user didn't fire on time and bomb exploded.
@@ -331,19 +331,19 @@ int main()
 //End of launching gun
 
 
-    scorecounter+=000.1;
-    sprintf(qwer,"Score: %f",scorecounter);
-    outtextxy(1200,100,qwer);
+     scorecounter+=000.1;
+     sprintf(qwer,"Score: %f",scorecounter);
+     outtextxy(1200,100,qwer);
 
 
-    time(NULL);
-    page=1-page;
-    delay(5);
+     time(NULL);
+     page=1-page;
+     delay(5);
 
 	} //end of while
     			
 	} //end of starting if
-    getch();
-    closegraph();
+     getch();
+     closegraph();
 
 }
