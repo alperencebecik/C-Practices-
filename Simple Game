@@ -1,0 +1,347 @@
+#include <graphics.h>
+#include <stdio.h>
+#include <time.h>
+int barrier(int x1,int y1,int x2,int y2)
+{
+    rectangle(x1,y1,x2,y2);
+}
+int bomb(int x,int y,int radius)
+{
+    circle(x,y,radius);
+}
+int main()
+{
+	 char qwer[100];
+     float scorecounter=000.1;
+     int o1=0,o2=0,o3=0,o4=0,o5=0;
+     float random[50],random2[50],random3[50],random4[50],random5[50];
+     float x1=1200,y1=480,y2=520;   					//barrier 1
+     float x11=1200,y11=480,y22=520;					//barrier 2
+     float x111=1200,y111=480,y222=520;					//barrier 3
+     float x1111=1200,y1111=480,y2222=520;				//barrier 4
+     float bx1=1200,by1=300,bombspeedx=10,bradius=7;	//related with bombs
+     float cx=150,cx6=153;
+     float cy=450,cy1=460,cy2=470,cy3=470,cy4=500,cy5=500,cy6=472; //Character part coordinates.
+     float speedx=2,speedy=10;										//it is not active now.Left and Right speeds.
+     float acce=1;
+     int bulletxspeed=10,bulletx=174,bullety=475;		//bullet
+     int barspeed=5,barspeed2=7,barspeed3=8,barspeed4=9;	//bar speeds
+
+	 int gd=DETECT;
+     int gm;
+     int page=0;
+     initgraph(&gm,&gd,"C:\\TC\\BGI");
+     initwindow(1300,550);
+     
+	 char starter;
+     boolean jump=false,fall=false,bar=false,bar2=false,allowgunshot=true;
+	 boolean bar3=false,bar4=false,bombb=false,gunshot=false;
+     clock_t t1;
+     printf("Press 's' key to start\nPres 'q' key to exit from here\n");
+	 printf("Press 'Numpad5' key to exit from game\nTAB Key=Launch Gun\tUP Key=Jump\n");
+     printf("You have to destroy bomb before comes near you.Otherwise it bombs and you die.");
+     scanf("%c",&starter);
+     	if(starter=='s')
+     	{
+        	outtextxy(100,100,"Game will start in 3 seconds");
+        	delay(1000);
+        	printf("\a");
+        	cleardevice();
+        	outtextxy(100,100,"Game will start in 2 seconds");
+        	delay(1000);
+        	printf("\a");
+        	cleardevice();
+        	outtextxy(100,100,"Game will start in 1 seconds");
+        	delay(1000);
+        	printf("\a\a");
+        	cleardevice();
+        	outtextxy(100,100,"Go");
+        	delay(1000);
+    while(1)
+{
+    //Drawing character lines
+	setactivepage(page);
+    setvisualpage(1-page);
+    cleardevice();
+    circle(cx,cy,10);        //head
+    line(cx,cy1,cx-1,cy1+40);//body
+    line(cx,cy2,cx-8,cy2+10);//arm-left
+    line(cx,cy3,cx+6,cy3+10);//arm-right
+    line(cx,cy4,cx-10,cy4+20);//leg-left
+    line(cx,cy5,cx+8,cy5+20);//leg-right
+    rectangle(cx6-5,cy6,cx6+20,cy6+5);
+    line(0,520,1360,520);
+    //Drawing character lines
+
+	//Controlling that which key users press
+
+	 if(GetAsyncKeyState(VK_NUMPAD5))
+   {
+        exit(1);
+   }
+
+		if(GetAsyncKeyState(VK_UP))
+    	{
+    		allowgunshot=false;
+    		if(!jump)
+            {
+            jump=true;
+            t1=clock();
+            }
+    	}
+
+		if(allowgunshot==true)  //Allowgunshot is changed when the character jumps.firing is banned while character is not on the floor, namely "false".
+    	{
+        	if(GetAsyncKeyState(VK_TAB))
+    		{
+        	gunshot=true;
+    		}
+		}
+
+    //end of key kontrolling.
+
+	//Jumping-Falling processes.
+
+	if( jump == true  && clock () - t1 > 14)   // 14 is our FPS. How long does it take during Jumping and Falling.
+    {
+        	if(!fall)
+        	{
+        		speedy-=acce;  // In real life when we jump our speed is decresing with negative acceleration progressively.
+        		cy-=  speedy;
+       	   		cy1-= speedy;
+      			cy2-= speedy;
+     			cy3-= speedy;
+      			cy4-= speedy;
+        		cy5-= speedy;
+        		cy6-= speedy;
+    		}
+        	else
+       		{
+     	   		speedy+=acce; //Also in falling stage our speed is increasing.
+        		cy+=  speedy;
+       			cy1+= speedy;
+       			cy2+= speedy;
+      			cy3+= speedy;
+      			cy4+= speedy;
+       			cy5+= speedy;
+       			cy6+= speedy;
+    		}
+    		t1=clock();    // I equalize time when falling finishes.
+    			if(!fall &&speedy==0)
+				{
+					fall=true;
+   				}
+					if(fall==true && speedy==18)  // If our speed is max(18) it finishes the falling process.
+					{
+               			cy=450,cy1=460,cy2=470,cy3=470,cy4=500,cy5=500,cy6=472;
+              			fall=false;
+                		jump=false;
+                		allowgunshot=true;
+            		}
+	}
+	//End of Jumping-Falling Processes
+
+//barrier creating processes
+if(!bar)
+{
+	time(NULL);
+	random[o1]=rand() %2500; // Possibility of creating barrier.
+    if(random[o1]==20)
+    {
+        bar=true;
+   	}
+}
+if(bar==true)
+{
+	barrier(x1, y1-20 , x1+20 , y2 );
+    x1-=barspeed;
+    if(x1<=10)
+    {
+    	bar=false;
+        o1++;
+        x1=1200;   //It refleshes our new barrier's X coordinate.It exists in all of the barrier processes if barrier's X coordinate lower than 10.
+    }
+}
+
+//Second barrier
+
+if(!bar2)
+{
+    time(NULL);
+    random2[o2]=rand() %3000;
+    if(random2[o2]==15)
+    {
+        bar2=true;
+    }
+}
+
+if(bar2==true)
+{
+    barrier(x11 , y11-50 , x11+20 , y22 );
+    x11-=barspeed2;
+    if(x11<=10)
+    {
+        bar2=false;
+        o2++;
+        x11=1200;
+    }
+}
+
+//Third Barrier
+
+if(!bar3)
+{
+    time(NULL);
+    random3[o3]=rand() %3000;
+    if(random3[o3]==10)
+    {
+            bar3=true;
+    }
+}
+if(bar3==true)
+{
+    barrier(x111, y111-10 , x111+20 , y222 );
+    x111-=barspeed3;
+    if(x111<=10)
+    {
+        bar3=false;
+        o3++;
+        x111=1200;
+    }
+}
+
+//Fourth Barrier
+
+if(!bar4)
+{
+    time(NULL);
+    random4[o4]= rand() %2000;
+    if(random4[o4]== 20 )
+    {
+        bar4=true;
+    }
+}
+if(bar4==true)
+{
+    barrier(x1111, y1111-5 , x1111+20 , y2222 );
+    x1111-=barspeed4;
+    if(x1111<=10)
+    {
+        bar4=false;
+        o4++;
+		x1111=1200;
+    }
+}
+
+//End of barrier creating.
+
+//Bomb creating processes
+
+if(!bombb)
+{
+    time(NULL);
+    random5[o5]=rand() % 400;
+    if(random5[o5]== 30 )
+    {
+        bombb=true;
+	}
+}
+
+	if(bombb==true)
+	{
+    	bomb(bx1,472,bradius);
+    	bx1-=bombspeedx;
+	}
+
+		if(bx1 < 10)
+		{
+    	bombb=false;
+    	o5++;
+    	bx1=1200;
+		}
+//End of bomb creating processes
+
+//Controlling conditions if barrier hit our character or not.
+
+if(x1<170 && x1>100)   //First barrier
+{
+    if(y1<cy5)
+    {
+    	printf("\a");
+    	exit(0);
+    }
+}
+
+    if(x11<170 && x11>100) //Second
+    {
+         if(y11<cy5)
+         {
+            printf("\a");
+            exit(1);
+         }
+    }
+
+    	if(x111<170 && x111>100) //Third
+		{
+        	if(y111<cy5)
+       		{
+       		 printf("\a");
+        	exit(0);
+       		}
+   		}
+
+   			if(x1111<170 && y1111>100) // //And Fourth
+    		{
+        		if(y1111<cy5)
+        		{
+            	printf("\a");
+            	exit(1);
+        		}
+			}
+	//End of controlling hit or not.
+
+//Launching the gun
+
+if(gunshot==true)      // gunshot is allowed if user doesn't press UP key.First, It was false.
+{
+    circle(bulletx,bullety,3);
+    bulletx+=bulletxspeed;
+    if(bulletx>1300)
+    {
+    bulletx=174;
+    gunshot=false;
+    }
+}
+
+	if(bulletx>=bx1)  //If the bullet's X coordinate is equal to bomb's X coordinate or higher bomb must be destroyed my bullet.So both are disappeared.
+    {
+        bombb=false;
+        gunshot=false;
+        o5++;
+        bx1=1200;
+        bulletx=174;
+    }
+
+    	if(bx1<200) //This is obvious that user didn't fire on time and bomb exploded.
+    	{
+        	printf("\a");
+        	exit(0);
+    	}
+//End of launching gun
+
+//score sayaci
+    scorecounter+=000.1;
+    sprintf(qwer,"Score: %f",scorecounter);
+    outtextxy(1200,100,qwer);
+//score sayaci
+
+	time(NULL);
+    page=1-page;
+    delay(5);
+
+} //end of while
+    	} //end of starting if
+    getch();
+    closegraph();
+
+}//end of main
