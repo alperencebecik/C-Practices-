@@ -110,9 +110,8 @@ int main()
         rectangle(94,10,444,690);
         int e=1;
         int y=1;
-
-
-		if(!letrotate) //şimdilik yok
+	
+	if(!letrotate) //şimdilik yok
         {
             if(GetAsyncKeyState(VK_UP))
             {
@@ -128,19 +127,18 @@ int main()
                     }
                     loll=true;
                 }
-        		    if(counter%2==0)//counter başta 2.UP a basınca 3 oluyor ve kalan 0 dan farklı.
+       		if(counter%2==0)//counter başta 2.UP a basınca 3 oluyor ve kalan 0 dan farklı.
         		                    //rotatenedir bize çubuğun yan yada düz olduğunu bildiriyor.
-        		    {
-        			       rotatenedir=false;
-        		    }
-        		    else
-        		    {
-            		    rotatenedir=true;
-        		    }
-        		    counter++;
+        	{
+        	     rotatenedir=false;
+        	}
+        	else
+        	{
+            	     rotatenedir=true;
+        	}
+        	counter++;
             }
-
-        }
+	}
         if(rotatenedir)// yan yatmış çubuk için sağa git
         {
             if(letrightrotate) //şu anda yok
