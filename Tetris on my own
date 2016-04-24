@@ -7,7 +7,7 @@ typedef struct node{
 	int data;
 	node *next;
 }a;
-node  *head[2];
+node  *head[2]; // bu şimdilik 2. Oyunun yapımı bittiğinde 14 olacak.
 void insertnode(int d)
 {
 	if(head[0]==NULL)
