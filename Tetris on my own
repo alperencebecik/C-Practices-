@@ -184,60 +184,59 @@ int main()
             }
         }
 
-         if(!rotatenedir) //eğer çubuk yan yatmamışsa sağ işlemleri
-         {
-            if(letright) 
-         	  {
-         		  if(GetAsyncKeyState(VK_RIGHT))
+        if(!rotatenedir) //eğer çubuk yan yatmamışsa sağ işlemleri
+        {
+           if(letright) 
+           {
+                if(GetAsyncKeyState(VK_RIGHT))
+         	{
+                     if(!loll)
+                     {
+         	          if(lastx1<405) //sınır
          		  {
-         			  if(!loll)
-         			  {
-         				  if(lastx1<405) //sınır
-         				  {
-							        longstick(lastx1,lastx2,lasty1,lasty2,lasty3,lasty4);
-         					    lastx1+=speedx;
-         					    lastx2+=speedx;
-						      }
-         			  }
-         			  loll=true;
-					      delay(50);
+			       longstick(lastx1,lastx2,lasty1,lasty2,lasty3,lasty4);
+                               lastx1+=speedx;
+        		       lastx2+=speedx;
+	         	  }
+         	      }
+         	      loll=true;
+         	      delay(50);
            	  }
-         	  }
-          }
+            }
+        }
         if(!rotatenedir) //çubuk yan yatmamışsa sol işlemleri
         {
-        	if(letleft) //sola gitmek için sorun yoksa.
-     		  {
-        		if(GetAsyncKeyState(VK_LEFT))
-     			  {
-         			if(!leftlimitt) 
-         			{
-         				if(!loll)
-        	 			{
-         					if(lastx1>100)
-         					{
-         						if(!rotatenedir)
-         						{
-         							longstick(lastx1,lastx2,lasty1,lasty2,lasty3,lasty4);
-         							lastx1-=speedx;
-         							lastx2-=speedx;
-         						}
-         						else
-        						{
-         							rotatelongstick(lastx1,lastx2,lasty1,lasty2,lasty3,lasty4);
-         							lastx1-=speedx;
-         							lastx2-=speedx;
-         						}
-         					}
+             if(letleft) //sola gitmek için sorun yoksa.
+     	     {   
+                  if(GetAsyncKeyState(VK_LEFT))
+     	          {
+                       if(!leftlimitt) 
+         	       {
+         		    if(!loll)
+        	 	    {
+         	                 if(lastx1>100)
+         			 {
+         			      if(!rotatenedir)
+         			      {
+         			            longstick(lastx1,lastx2,lasty1,lasty2,lasty3,lasty4);
+         				    lastx1-=speedx;
+         				    lastx2-=speedx;
+         			      }
+         			      else
+        			      {
+         	                           rotatelongstick(lastx1,lastx2,lasty1,lasty2,lasty3,lasty4);
+         				   lastx1-=speedx;
+         				   lastx2-=speedx;
+         			      }
+         		          }
 
-         				}
-         				loll=true;
-     				}
-     					delay(50);
-
-     			}
-     		}
-     }
+         	             }
+         	            loll=true;
+     		       }
+     		       delay(50);
+                  }
+     	     }
+     	}     
 
 
          if(!first) //yeni engel çıktığında koordinatlarını eşitliyoruz.
@@ -270,17 +269,15 @@ int main()
          {
             rotatelongstick(x1[o],x2[o],y1[o],y2[o],y3[o],y4[o]);
          }
-
-		     y1[o]+=speedy;
-         y2[o]+=speedy;
-         y3[o]+=speedy;
-         y4[o]+=speedy;
-         lasty1=y1[o];
-         lasty2=y2[o];
-         lasty3=y3[o];
-         lasty4=y4[o];
-
-        if(oldrotated==true)
+		y1[o]+=speedy;
+         	y2[o]+=speedy;
+         	y3[o]+=speedy;
+         	y4[o]+=speedy;
+         	lasty1=y1[o];
+         	lasty2=y2[o];
+         	lasty3=y3[o];
+         	lasty4=y4[o];
+	if(oldrotated==true)  //yerde kalan yatan çubukları yazdırıyoruz
         {
             do
 			      {
@@ -290,37 +287,38 @@ int main()
         }
 
 
-        if(old==true)  //yere normal çubuk düştüyse
-     	  {
+        if(old==true)  //yere normal çubuk düştüyse yazdırıyoruz ve yeni gelen cismimizin eski(yerdeki) cisimlerin
+                       //koordinatlarına göre iç içe geçmelerini engelliyorum aslında onların bir nesne olduklarını
+                       //bilgisayara çevirmeye çalıştım.
+     	{
         	do
-			    {
+		{
         	if(lastx1+35==searchh(e))  //sağında cisim varsa sağa gitmesini engelliyoruz
-          {
-            	if(lasty4+35 > searchh(e+2)-60)
-            	{
-            		  letright=false;
-            	}
+          	{
+            		if(lasty4+35 > searchh(e+2)-60)
+            		{
+            	 		letright=false;
+            		}
         	}
         	else
         	{
         		letright=true;  //cisim yoksa gitsin
         	}
-		    	if(lastx1==searchh(e)+35) //solunda cisim varsa  sola gitmesini engelliyoruz.
-          {
-            	if(lasty4+35 > searchh(e+2)-60)
-            	{
-        			    letleft=false;
-            	}
+		if(lastx1==searchh(e)+35) //solunda cisim varsa  sola gitmesini engelliyoruz.
+          	{
+            		if(lasty4+35 > searchh(e+2)-60)
+            		{
+        			letleft=false;
+            		}
         	}
-          else
+          	else
         	{
         		letleft=true;  //yoksa gitsin
         	}
-        	
         	if(lasty4+35 >= searchh(e+2) && lastx1==searchh(e))
         	{
             	falling=true;  //çubuk başka bir çubuk üstüne geldiğinde
-    		  }
+    		}
         	longstick(searchh(e),searchh(e+1),searchh(e+2),searchh(e+3),searchh(e+4),searchh(e+5)); //çubuğu yazdır
         	e+=6;
         	}while(e<=r);
@@ -342,7 +340,7 @@ int main()
              falling=false;
         }
 
-		    if(!rotatenedir) //düşen cisim çubuk değilse
+	      if(!rotatenedir) //düşen cisim çubuk değilse
         {
             if(y4[o]>=655) //çubuk yere düştüyse
         	{
