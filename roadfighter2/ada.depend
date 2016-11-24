@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1469805666 source:c:\users\user\desktop\ada\main.cpp
+	<stdio.h>
+	<graphics.h>
+	<time.h>
+	<stdlib.h>
+	<windows.h>
+	<mmsystem.h>
+
