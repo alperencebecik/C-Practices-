@@ -1,0 +1,508 @@
+#headerlink
+{
+	text-decoration:none;
+	font-size:20px;
+	color:green;
+}
+#headerofsite
+{
+	font-style:italic;
+	font-size:30px;
+	margin-left:5px;
+	color:lightgreen;
+	font-weight: bold;
+	font-family: "Sofia";
+}
+#description
+{
+	font-size: 14px;
+	margin-left: 0px;
+}
+.desparag
+{
+	text-align: justify;
+}
+.wrapto
+{
+	word-wrap: break-word;
+}
+/*#headerlink2
+{
+	text-decoration:none;
+	font-size:15px;
+	color:green;
+	border-style:solid;
+	border-color:green;
+	margin-left:8px;
+}*/
+/*#headerlink2:hover
+{
+	border-style:solid;
+	color:white;
+	background-color:green;
+	
+}*/
+
+#submitit
+{
+	position:relative;
+	top:-5px;
+}
+#headerlink:hover
+{
+	color:red;
+}
+#LoginForm
+{
+	position:relative;
+	width:300px;
+	margin:auto;
+}
+#kayitform
+{
+	width:250px;
+	margin:auto;
+	height:20px;
+}
+#LoginHeaderParagraph
+{
+	position:relative;
+	top:-25px;
+}
+
+.LoginButton
+{
+	background-color:white;
+	color:green;
+	border-style:solid;
+	border-color:green;
+	font-family:arial;
+
+	box-shadow: 0px 0px 0px #000;
+   -moz-box-shadow: 0px 0px 0px #000;
+   -webkit-box-shadow: 0px 0px 0px #000;
+
+  transition:0s;
+  height:30px;
+
+	
+}
+.LoginButton:hover
+{
+	background-color:green;
+	color:white;
+	border-style:solid;
+	border-color:green;
+	box-shadow: 0px 0px 0px #000;
+   -moz-box-shadow: 0px 0px 0px #000;
+   -webkit-box-shadow: 0px 0px 0px #000;
+}
+
+.NewThreadButton
+{
+	background-color:lightgrey;
+	color:green;
+	border-style:solid;
+	border-color:green;
+	font-family:arial;
+	margin-left:22px;
+	box-shadow: 0px 0px 0px #000;
+   -moz-box-shadow: 0px 0px 0px #000;
+   -webkit-box-shadow: 0px 0px 0px #000;
+
+  /* ...and now for the proper property */
+  transition:0s;
+  height:30px;
+
+	
+}
+.NewThreadButton:hover
+{
+	background-color:green;
+	color:white;
+	border-style:solid;
+	border-color:green;
+	box-shadow: 0px 0px 0px #000;
+   -moz-box-shadow: 0px 0px 0px #000;
+   -webkit-box-shadow: 0px 0px 0px #000;
+}
+#commentsenderbutton
+{
+	background-color:green;
+	color:white;
+	font-size:12px;
+	border-style:solid;
+	border-color:green;
+	box-shadow: 0px 0px 0px #000;
+   -moz-box-shadow: 0px 0px 0px #000;
+   -webkit-box-shadow: 0px 0px 0px #000;
+   width:70px;
+   transition:0s;
+   position:relative;
+   top:20px;
+   left:50px;
+}
+#commentsenderbutton:hover
+{
+	background-color:lightgreen;
+	color:white;
+	font-size:12px;
+	border-style:solid;
+	border-color:lightgreen;
+	box-shadow: 0px 0px 0px #000;
+   -moz-box-shadow: 0px 0px 0px #000;
+   -webkit-box-shadow: 0px 0px 0px #000;
+   transition:0s;
+   width:70px;
+}
+#commentsenderbutton2
+{
+	background-color:green;
+	color:white;
+	font-size:12px;
+	border-style:solid;
+	border-color:green;
+	box-shadow: 0px 0px 0px #000;
+   -moz-box-shadow: 0px 0px 0px #000;
+   -webkit-box-shadow: 0px 0px 0px #000;
+   width:70px;
+   transition:0s;
+   position:relative;
+   top:20px;
+   
+  
+}
+#commentsenderbutton2:hover
+{
+	background-color:lightgreen;
+	color:white;
+	font-size:12px;
+	border-style:solid;
+	border-color:lightgreen;
+	box-shadow: 0px 0px 0px #000;
+   -moz-box-shadow: 0px 0px 0px #000;
+   -webkit-box-shadow: 0px 0px 0px #000;
+   transition:0s;
+   width:70px;
+}
+
+
+#SubmitTheThread
+{
+	position:relative;
+	top:-5px;
+}
+#threadform
+{
+	position:absolute;
+	top:10px;
+	
+}
+#NavLeft:hover
+{
+	color:green;
+	transition:0.4s;
+}
+#Gonderen
+{
+	background-color:black;
+	color:white;
+	width:150px;
+	overflow:hidden;
+}
+#Baslik
+{
+	width:200px;
+	overflow:hidden;
+	background-color:grey;
+}
+#NeedWrap2
+{
+	word-wrap:break-word;
+	position:relative;
+}
+#d
+{
+	font-weight:bold;
+	font-size:20px;
+}
+
+#MessageShower
+{
+	position:relative;
+	border-style:solid;
+	border-width:2px;
+}
+#MessageById
+{
+	margin-top:160px;
+	position:absolute;
+	font-family: arial, sans-serif;
+	border:4px solid black;
+}
+#Mesaj
+{
+	width:300px;
+	overflow:hidden;
+	background-color:white;
+}
+#Gonderen2
+{
+	overflow:hidden;
+}
+#Baslik2
+{
+	overflow:hidden;
+}
+#Mesaj2
+{
+	overflow:hidden;
+}
+.oyle
+{
+	color:green;
+}
+#OpenMessage
+{
+	width:2px;
+}
+#MessageListTable
+{
+	border-style:solid;
+	border-width:10px;
+	position:absolute;
+	margin:auto;
+	top:150px;
+	width:90%;
+	overflow:hidden;
+}
+#NavLeft2:hover
+{
+	color:green;
+	transition:0.4s;
+}
+
+#threadcontainer
+{
+	position:relative;
+	top:-30px;
+	left:-5px;
+}
+#submitthread
+{
+	margin-left:-83px;
+}
+#baslik
+{
+	
+	height:30px;
+	top:30px;
+	
+}
+#threadwriter
+{
+	position:relative;
+	font-size:20px;
+	color:green;
+	margin:auto;
+
+}
+#commentwriter2
+{
+	position:relative;
+	font-size:20px;
+	color:green;
+	margin:auto;
+
+}
+
+#threaddate
+{
+	font-size:15px;
+	color:black;
+}
+
+#baslik2
+{
+	position:relative;
+	top:-13px;
+	left:-5px;
+	color:green;
+}
+#textareaforcomment
+{
+	background-color:grey;
+	width:600px;
+	height:200px;
+}
+#needwrap
+{
+	word-wrap: break-word;
+}
+#textareaninkendisi
+{
+	position:relative;
+	width:460px;
+	height:110px;
+	top:20px;
+	margin-left:50px;
+}
+
+#Reply
+{
+	position:relative;
+	display:table;
+	margin-left:-20px;
+}
+
+
+#textareaforcomment2
+{
+	background-color:grey;
+	width:300px;
+	height:200px;
+}
+
+#textareaninkendisi2
+{
+	position:relative;
+	max-width:250px;
+	width:250px;
+	height:110px;
+	max-height: 100px;
+	top:20px;
+	margin-left:0px;
+}
+
+#TextForNewThread
+{
+	height:250px;
+	max-width:850px;
+}
+
+#gonderenspan
+{
+	color:purple;
+	position:relative;
+	font-size:20px;
+	top:5px;
+}
+
+#MessageLink
+{
+	box-shadow: 0px 0px 0px #000;
+   -moz-box-shadow: 0px 0px 0px #000;
+   -webkit-box-shadow: 0px 0px 0px #000;
+   transition:0s;
+   width:50px;
+   height:25px;
+}
+
+#ThreadTableOfUser
+{
+	margin:auto;
+	position:relative;
+	font-family: arial, sans-serif;
+	border:2px solid black;
+	
+}
+
+#messagewho
+{
+	margin:auto;
+	width:70%;
+
+}
+#TextForMessage
+{
+	height:250px;
+	max-width:750px;
+}
+#hm2
+{
+	width:100%;
+}
+
+
+
+
+#MessageIcon
+{
+	position:absolute;
+	right:67px;
+	top:-1px;
+}
+
+#endiscommenter
+{
+	position:relative;
+	display:table;
+	margin:auto;
+}
+
+.entry
+{
+	margin-bottom:20px;
+	
+}
+#listofthreads
+{
+	margin:10px;
+	
+	
+}
+#BugunOfWho:hover
+{
+	color:red;
+}
+#GoSomeoneProfile
+{
+	text-decoration:none;
+	
+}
+#GoSomeoneProfile:hover
+{
+	text-decoration:underline;
+	font-size:20px;
+	color:teal;
+
+}
+.threadlink
+{
+	font-size:20px;
+	position:relative;
+	margin-right:30px;
+	width:100%;
+	margin-top:-15px;
+}
+#SpanOfThreadLink
+{
+	font-size:12px;
+	position:relative;
+	margin-right:200px;
+}
+/*@media (max-width: 900x) { 
+   
+#endiscommenter{
+    top: 0 !important; 
+    left: 0 !important;
+    margin: 0 !important;
+    width: 95%;
+         text-align: center;
+  }
+#endiscommenter{
+        float: inherit !important;
+        margin: 0 !important;
+  }
+}*/
+
+#comments
+{
+	margin-top:50px;
+}
+#InformationOfComment
+{
+	margin-left:20px;
+}
+
+
