@@ -1,7 +1,8 @@
 # depslib dependency file v1.0
-1497743666 source:c:\users\lenovo\desktop\kaa\main.cpp
+1497800743 source:c:\users\lenovo\desktop\kaa\main.cpp
 	<stdio.h>
 	<graphics.h>
 	<time.h>
 	<stdlib.h>
+	<math.h>
 

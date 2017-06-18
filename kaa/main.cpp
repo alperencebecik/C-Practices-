@@ -2,6 +2,7 @@
 #include <graphics.h>
 #include <time.h>
 #include <stdlib.h>
+#include <math.h>
 
 
 struct gamer{
@@ -16,9 +17,80 @@ struct triangles{
     int coordinates[6];
 };
 
+
+void five(int x,int y)
+{
+    fillellipse(537+x,367+y,3,3);
+    fillellipse(552+x,367+y,3,3);
+    fillellipse(545+x,376+y,3,3);
+    fillellipse(537+x,383+y,3,3);
+    fillellipse(552+x,383+y,3,3);
+}
+void one(int x,int y)
+{
+    fillellipse(545+x,376+y,3,3);
+}
+void three(int x,int y)
+{
+   fillellipse(537+x,367+y,3,3);
+   fillellipse(545+x,376+y,3,3);
+   fillellipse(552+x,383+y,3,3);
+}
+void four(int x,int y)
+{
+    fillellipse(538+x,367+y,3,3);
+    fillellipse(553+x,367+y,3,3);
+    fillellipse(538+x,384+y,3,3);
+    fillellipse(553+x,384+y,3,3);
+}
+void six(int x,int y)
+{
+    fillellipse(538+x,366+y,3,3);
+    fillellipse(538+x,374+y,3,3);
+    fillellipse(538+x,382+y,3,3);
+    fillellipse(550+x,366+y,3,3);
+    fillellipse(550+x,374+y,3,3);
+    fillellipse(550+x,382+y,3,3);
+
+}
+void two(int x,int y)
+{
+   fillellipse(539+x,369+y,3,3);
+   fillellipse(550+x,380+y,3,3);
+}
+
+void decide(int x,int a,int b)
+{
+    if(x==1)
+    {
+        one(a,b);
+    }
+    else if(x==2)
+    {
+        two(a,b);
+    }
+    else if(x==3)
+    {
+        three(a,b);
+    }
+    else if(x==4)
+    {
+        four(a,b);
+    }
+    else if(x==5)
+    {
+        five(a,b);
+    }
+    else
+    {
+        six(a,b);
+    }
+}
+
+
 void drawStones(struct triangles toStone[])
 {
-   int i;
+   int i,temp1=-1,temp2=-1;
    for(i=0;i<12;i++)
    {
         for(int j=1;j<=toStone[i].stoneCount;j++)
@@ -28,6 +100,11 @@ void drawStones(struct triangles toStone[])
             circle(toStone[i].coordinates[0]+40,toStone[i].coordinates[1]+yPosUp,25);
             setfillstyle(SOLID_FILL,toStone[i].color);
             fillellipse(toStone[i].coordinates[0]+40,toStone[i].coordinates[1]+yPosUp,20,20);
+            if(j>5)
+            {
+                temp1=i;
+                break;
+            }
         }
    }
    for(int k=i;k<24;k++)
@@ -39,8 +116,15 @@ void drawStones(struct triangles toStone[])
             circle(toStone[k].coordinates[0]+40,toStone[k].coordinates[3]-yPosDown,25);
             setfillstyle(SOLID_FILL,toStone[k].color);
             fillellipse(toStone[k].coordinates[0]+40,toStone[k].coordinates[3]-yPosDown,20,20);
+            if(n>5)
+            {
+                temp2=k;
+                break;
+            }
         }
    }
+
+
 }
 
 
@@ -66,8 +150,27 @@ void drawBackGammon(struct triangles p[])
        }
     }
 }
+void dice(struct triangles t[],int *d11,int *d22)
+{
+    setfillstyle(SOLID_FILL,WHITE);
+    bar(530,360,560,390);
+    bar(560,390,590,420);
+    setfillstyle(SOLID_FILL,BLACK);
+    int d1,d2,i=1;
+
+        d1 = rand() % 6 +1;
+        d2 = rand() % 6 +1;
+        decide(d1,0,0);
+        decide(d2,30,30);
+        *d11=d1;
+        *d22=d2;
+        drawBackGammon(t);
+        drawStones(t);
+}
+
 int main()
 {
+    srand(time(NULL));
     struct gamer Gamer1;
     struct gamer Gamer2;
     Gamer1.stoneCounfofPlayer=15;
@@ -75,8 +178,9 @@ int main()
     Gamer1.colorofPlayer=15;
     Gamer2.colorofPlayer=3;
     struct triangles places[24];
+    int old=0,brokenG1=0,brokenG2=0;
     int x[6]={62,60,140,60,101,350};
-    int i,page=0,caught=0;
+    int i,page=0,caught=0,whichStoneBroke,d1,d2;
     for(i=0;i<6;i++)
     {
         places[i].coordinates={x[0],x[1],x[2],x[3],x[4],x[5]};
@@ -142,64 +246,27 @@ int main()
     places[16].color=15;
     places[18].color=15;
     places[23].color=3;
-
-
+    int neww=0;
+    int truetoPut=0;
     drawBackGammon(places);
     drawStones(places);
     POINT cursorPosition;
-    int clr;
-    while(1)
+    int clr,temp,temp2,stay=50;
+    while(stay<70)
     {
-        if(GetAsyncKeyState(VK_LBUTTON) && caught==0 )
-        {
-            GetCursorPos(&cursorPosition);
-            int catchTheStonex=cursorPosition.x;
-            int catchTheStoney=cursorPosition.y;
-            for(int i=0;i<24;i++)
-            {
-                if(catchTheStonex>=places[i].coordinates[0] && catchTheStonex<=places[i].coordinates[2] )
-                {
-                     if( (catchTheStoney>=places[i].coordinates[1] && catchTheStoney<=places[i].coordinates[5])|| (catchTheStoney<=places[i].coordinates[1] && catchTheStoney>=places[i].coordinates[5]) )
-                     {
-                        if(places[i].stoneCount>=1)
-                        {
-                            places[i].stoneCount-=1;
-                            cleardevice();
-                            drawBackGammon(places);
-                            drawStones(places);
-                            clr=places[i].color;
-                            caught=1;
-                            circle(catchTheStonex,catchTheStoney,28);
-                            setfillstyle(SOLID_FILL,clr);
-                            fillellipse(catchTheStonex,catchTheStoney,23,23);
-                        }
-                     }
-                }
-            }
+      setactivepage(page);
+      setvisualpage(1-page);
+      cleardevice();
+      dice(places,&d1,&d2);
+      delay(2*s tay);
+      stay=stay+2;
+      page=1-page;
+    }
 
-        }
-        if(caught==1)
-        {
-            GetCursorPos(&cursorPosition);
-            cleardevice();
-            int csx,csy;
-            csx=cursorPosition.x;
-            csy=cursorPosition.y;
-            circle(csx,csy,28);
-            setfillstyle(SOLID_FILL,clr);
-            fillellipse(csx,csy,23,23);
-            drawStones(places);
-            drawBackGammon(places);
+    while(Gamer1.stoneCounfofPlayer>0 && Gamer2.stoneCounfofPlayer>0 )
+    {
 
-        }
-        if(caught==0)
-        {
-            delay(100);
-        }
-
-
-
-        }
+    }
 
 
 
