@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1497832872 source:c:\documents and settings\user\desktop\backgammon\main.cpp
+	<stdio.h>
+	<graphics.h>
+	<time.h>
+	<stdlib.h>
+	<math.h>
+
